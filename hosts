@@ -1,0 +1,11 @@
+[domaincontrollers]
+domain ip address
+
+
+[domaincontrollers:vars]
+ansible_port=5985
+ansible_user= user@company.com
+ansible_password="password goes here"
+ansible_winrm_server_cert_validation = ignore
+ansible_become_method= runas
+ansible_winrm_transport = kerberos
