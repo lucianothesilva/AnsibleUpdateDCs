@@ -1,0 +1,19 @@
+stages:
+  - update
+  - notify
+
+update_servers_job:
+  image: willhallonline/ansible:2.9-ubuntu-20.04 
+  stage: update
+
+  script:
+    - cp krb5.conf /etc/krb5.conf
+    - pwd
+    - ansible-playbook   updating.yml -u root  -i  inventory 
+    
+notify_success:
+  image: curlimages/curl:7.84.0    
+  stage: notify
+  needs: ["update_servers_job"]
+  script:
+    - curl -s -X POST $URL -d chat_id=$ID -d text="Servidores atualizados com sucesso"
