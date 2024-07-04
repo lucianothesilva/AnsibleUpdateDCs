@@ -1,5 +1,5 @@
 [domaincontrollers]
-domain ip address
+domain ip address or dns
 
 
 [domaincontrollers:vars]
